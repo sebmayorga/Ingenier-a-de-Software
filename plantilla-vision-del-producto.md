@@ -7,7 +7,7 @@
 ---
 
 **Autor:** Sebastián Mayorga Galicia
-**Fecha de la última versión:** 1 de septiembre de 2026
+**Fecha de la última versión:** 1 de octubre de 2026
 **Repositorio:**
 
 ---
@@ -17,7 +17,7 @@
 **Nombre del sistema:** RoomFix
 
 **Descripción:**
-RoomFix es un sistema para reportar y dar seguimiento a fallas de mantenimiento en las habitaciones de un hotel. Ayuda a identificar qué problemas necesitan atención primero para evitar afectar a los huéspedes o dejar habitaciones fuera de servicio.
+RoomFix es un sistema para reportar y dar seguimiento a fallas de mantenimiento en las habitaciones de un hotel. Ayuda a identificar qué problemas necesitan atención primero y permite conocer cuándo una falla ya fue atendida para evitar afectar a los huéspedes o mantener habitaciones fuera de servicio innecesariamente.
 
 ---
 
@@ -27,7 +27,7 @@ RoomFix es un sistema para reportar y dar seguimiento a fallas de mantenimiento 
 En un hotel pueden surgir fallas constantemente: aire acondicionado, agua caliente, cerraduras, iluminación, televisión, fugas, entre otras. Cuando no existe un buen control, una falla puede tardar en atenderse, afectar a un huésped o impedir que una habitación pueda utilizarse.
 
 **Cómo se resuelve hoy sin el sistema:**
-Las fallas pueden comunicarse directamente a mantenimiento, por llamada, mensaje o de forma verbal. Esto dificulta saber qué problemas siguen pendientes, quién los está atendiendo y cuáles deberían resolverse primero.
+Las fallas pueden comunicarse directamente a mantenimiento, por llamada, mensaje o de forma verbal. Esto dificulta saber qué problemas siguen pendientes, quién los está atendiendo, cuáles deberían resolverse primero y cuándo una habitación puede volver a utilizarse después de una reparación.
 
 **Usuarios del sistema:**
 
@@ -38,7 +38,7 @@ Las fallas pueden comunicarse directamente a mantenimiento, por llamada, mensaje
 | Gerente                   | Consultar el estado de las habitaciones y el historial de fallas | Tener habitaciones fuera de servicio por demasiado tiempo        |
 
 **Un conflicto entre usuarios:**
-Recepción puede necesitar que una habitación sea reparada rápidamente porque está próxima a ocuparse, mientras que mantenimiento puede tener otras fallas más graves pendientes. El sistema debe ayudar a establecer qué problema requiere atención primero.
+Recepción puede necesitar que una habitación sea reparada rápidamente porque está próxima a ocuparse, mientras que mantenimiento puede tener otras fallas más graves pendientes. El sistema debe ayudar a establecer qué problema requiere atención primero considerando la gravedad de la falla y la situación de la habitación.
 
 ---
 
@@ -47,8 +47,12 @@ Recepción puede necesitar que una habitación sea reparada rápidamente porque 
 ### Dentro del alcance
 
 * Registrar fallas indicando habitación, tipo de problema y descripción.
-* Clasificar las fallas por nivel de prioridad.
-* Asignar fallas al personal de mantenimiento y registrar su estado.
+* Clasificar las fallas por nivel de prioridad considerando su gravedad y la situación de la habitación.
+* Permitir que la prioridad de una falla se actualice cuando cambie la situación de la habitación.
+* Asignar fallas al personal de mantenimiento.
+* Registrar y consultar el estado de una falla para saber si está pendiente, siendo atendida o ya fue resuelta.
+* Permitir que mantenimiento registre cuándo terminó el trabajo de reparación.
+* Mostrar cuándo una habitación que estaba afectada por una falla puede volver a utilizarse después de que la reparación haya terminado.
 * Consultar el historial de fallas y reparaciones de cada habitación.
 * Mostrar las fallas pendientes y las habitaciones afectadas.
 
@@ -59,7 +63,7 @@ Recepción puede necesitar que una habitación sea reparada rápidamente porque 
 * Detectar fallas automáticamente mediante sensores.
 
 **Por qué queda fuera:**
-La detección automática mediante sensores requeriría integrar dispositivos físicos y tecnología adicional. El proyecto se enfoca en mejorar el reporte, seguimiento y priorización de las fallas que detecta el personal del hotel.
+RoomFix se enfoca en el mantenimiento de las habitaciones y no en la administración completa del hotel. Por esta razón, el sistema puede indicar cuándo una habitación deja de estar afectada por una falla, pero no administra su reservación, pago o check-in. La detección automática mediante sensores también queda fuera porque requeriría integrar dispositivos físicos y tecnología adicional.
 
 ---
 
@@ -93,7 +97,9 @@ El sistema registra, consulta y organiza información sobre habitaciones, fallas
 Prototipado rápido.
 
 **Por qué le conviene a este proyecto:**
-Aunque el problema principal de RoomFix está definido, algunos requisitos pueden cambiar al conocer mejor cómo trabaja el personal del hotel. Un prototipo permitiría mostrar rápidamente cómo se registrarían, priorizarían y atenderían las fallas para recibir retroalimentación de recepción, mantenimiento y gerencia antes de desarrollar el sistema completo.
+Aunque el problema principal de RoomFix está definido, todavía existen requisitos que necesitan confirmarse con las personas que realizan estas actividades en un hotel. El prototipado rápido permite crear una representación inicial del sistema para mostrar cómo se registrarían, priorizarían y atenderían las fallas. Este prototipo se utilizará para obtener retroalimentación de los usuarios, entender mejor sus necesidades y ajustar los requisitos antes de desarrollar la versión definitiva del sistema.
+
+El prototipo no se considera el sistema terminado. Su propósito principal es ayudar a validar los requisitos y detectar cambios necesarios antes de avanzar con el desarrollo completo.
 
 ### Alternativas descartadas
 
@@ -101,13 +107,13 @@ Aunque el problema principal de RoomFix está definido, algunos requisitos puede
 Cascada.
 
 *Por qué la descarté:*
-Obligaría a definir prácticamente todos los requisitos desde el inicio. En este proyecto algunas reglas, como la prioridad de las fallas, pueden necesitar cambios después de recibir retroalimentación del personal del hotel.
+Obligaría a definir prácticamente todos los requisitos desde el inicio. En RoomFix todavía existen aspectos que deben confirmarse con los usuarios, como la forma de priorizar las fallas y el seguimiento que necesitan durante una reparación. Si estos requisitos cambian después de recibir retroalimentación, sería más difícil realizar ajustes utilizando este modelo.
 
 **Alternativa 2:**
 Modelo en V.
 
 *Por qué la descarté:*
-Su nivel de planificación y validación es mayor al que necesita este proyecto. RoomFix no es un sistema crítico ni requiere certificaciones, por lo que un modelo incremental permite avanzar de forma más sencilla y recibir retroalimentación durante el desarrollo.
+Requiere definir desde etapas tempranas los requisitos y las pruebas relacionadas con cada fase del desarrollo. En RoomFix todavía necesitamos validar algunos requisitos con los usuarios antes de considerarlos definitivos. El prototipado rápido permite obtener esa retroalimentación primero y ajustar la definición del sistema antes de avanzar a su desarrollo completo.
 
 ---
 
@@ -123,5 +129,5 @@ Reviso que el documento cumpla lo siguiente:
 * [x] Identifiqué el tipo de sistema y al menos dos atributos de calidad
 * [x] Anoté al menos tres reglas de negocio no obvias
 * [x] Justifiqué el ciclo de vida contra dos alternativas descartadas
-* [ ] El documento está en mi repositorio y se puede leer desde el navegador
+* [x] El documento está en mi repositorio y se puede leer desde el navegador
 * [x] Borré todas las instrucciones en cursiva de la plantilla

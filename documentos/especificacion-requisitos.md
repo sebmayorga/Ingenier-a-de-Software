@@ -271,5 +271,24 @@ Recepción puede necesitar que una habitación sea reparada rápidamente porque 
 - [x] Mi dupla revisó el documento y su revisión está registrada
 - [x] Borré los ejemplos y las instrucciones en cursiva
 
+## 8. Revisión de la dupla
+
+
+**Proyecto:** RoomFix  
+**Revisor:** Fernando Saucedo
+**Estado:** Revisión realizada y autorizada.
+
+### Retroalimentación
+
+El proyecto RoomFix presenta una estructura clara desde la identificación del problema hasta el desarrollo del prototipo. La distribución de funciones entre Recepción, Personal de limpieza, Mantenimiento y Gerencia permite que cada usuario tenga acceso a las herramientas correspondientes a sus responsabilidades.
+
+El diagrama de casos de uso representa las actividades principales del sistema y mantiene relación con los requisitos establecidos. Por su parte, el prototipo cuenta con una interfaz uniforme y permite registrar, consultar y dar seguimiento a las fallas de mantenimiento.
+
+Como aspectos de mejora, se recomienda comprobar el funcionamiento de los mensajes de validación cuando faltan datos obligatorios, verificar que las actualizaciones de Mantenimiento se reflejen en los demás perfiles y ajustar los márgenes superiores de algunas pantallas, ya que ciertos encabezados quedan parcialmente ocultos.
+
+### Atención a las observaciones
+
+Se identificó el problema de visualización y se intentó corregir en Figma. También se consideran las pruebas del registro de fallas y de la actualización de estados para comprobar el funcionamiento de los casos de uso.
+
 ## 8. Link de prototipo
 https://pale-snowy-72984820.figma.site/

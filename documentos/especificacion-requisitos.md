@@ -268,5 +268,8 @@ Recepción puede necesitar que una habitación sea reparada rápidamente porque 
 - [x] Ningún requisito impone una solución técnica
 - [x] Todos los requisitos caben dentro del alcance declarado
 - [x] La tabla de trazabilidad está completa
-- [ ] Mi dupla revisó el documento y su revisión está registrada
+- [x] Mi dupla revisó el documento y su revisión está registrada
 - [x] Borré los ejemplos y las instrucciones en cursiva
+
+## 8. Link de prototipo
+https://pale-snowy-72984820.figma.site/

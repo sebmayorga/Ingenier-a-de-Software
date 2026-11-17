@@ -1,0 +1,26 @@
+---
+config:
+  theme: redux-color
+  fontFamily: '''Inter Variable'', sans-serif'
+---
+sequenceDiagram
+    actor Rec as Recepcion o Limpieza
+    participant Web as Aplicacion web
+    participant Usu as Usuario
+    participant Fal as Falla
+
+    Rec->>Web: Ingresa habitacion, tipo y descripcion
+    Web->>+Usu: registrarFalla(numeroHabitacion, tipo, descripcion)
+
+    alt Datos completos
+        Usu->>+Fal: crear registro de falla
+        Note right of Fal: Estado inicial: Pendiente
+        Fal-->>-Usu: Falla registrada
+        Usu-->>Web: Registro exitoso
+        Web-->>Rec: Muestra confirmacion
+    else Faltan datos obligatorios
+        Usu-->>Web: Registro rechazado
+        Web-->>Rec: Solicita completar informacion
+    end
+
+    deactivate Usu

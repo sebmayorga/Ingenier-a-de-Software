@@ -1,0 +1,32 @@
+---
+config:
+  theme: forest
+  layout: dagre
+  look: classic
+  fontFamily: '''Source Code Pro Variable'', monospace'
+---
+stateDiagram-v2
+    direction TB
+
+    [*] --> Pendiente: registrarFalla()
+
+    Pendiente --> EnAtencion: asignar responsable / cambiarEstado("En atención")
+
+    EnAtencion --> Terminada: finalizar reparación [reparación completada] / cambiarEstado("Terminada")
+
+    Terminada --> [*]
+
+    note right of Pendiente
+        Falla registrada
+        y pendiente de atención
+    end note
+
+    note right of EnAtencion
+        Mantenimiento trabaja
+        en la reparación
+    end note
+
+    note right of Terminada
+        Reparación finalizada
+        y falla cerrada
+    end note

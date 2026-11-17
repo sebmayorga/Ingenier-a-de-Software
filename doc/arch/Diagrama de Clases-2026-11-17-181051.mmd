@@ -1,0 +1,67 @@
+---
+config:
+  theme: redux-color
+  layout: elk
+  class:
+    hideEmptyMembersBox: true
+  look: neo
+---
+classDiagram
+direction TB
+    class Usuario {
+	    -idUsuario: int
+	    -nombre: string
+	    -rol: string
+	    +registrarFalla(numeroHabitacion: int, tipo: string, descripcion: string) void
+	    +consultarFallas() List~Falla~
+    }
+
+    class Habitacion {
+	    -numero: int
+	    -disponible: bool
+	    +actualizarDisponibilidad(disponible: bool) void
+	    +consultarFallas() List~Falla~
+    }
+
+    class Falla {
+	    -idFalla: int
+	    -tipoProblema: string
+	    -descripcion: string
+	    -gravedad: string
+	    -prioridad: string
+	    -estado: string
+	    +actualizarPrioridad(nuevaPrioridad: string) void
+	    +cambiarEstado(nuevoEstado: string) void
+	    +consultarEstado() string
+    }
+
+    class Asignacion {
+	    -idAsignacion: int
+	    -fecha: Date
+	    +cambiarResponsable(nuevoResponsable: Usuario) void
+	    +consultarResponsable() Usuario
+    }
+
+    class Reparacion {
+	    -idReparacion: int
+	    -descripcionTrabajo: string
+	    -estadoTrabajo: string
+	    -fechaFinalizacion: Date
+	    +registrarAvance(descripcion: string) void
+	    +finalizarReparacion(fecha: Date) void
+    }
+
+    class CambioEstado {
+	    -idCambio: int
+	    -estadoAnterior: string
+	    -estadoNuevo: string
+	    -fecha: Date
+	    +registrarCambio(anterior: string, nuevo: string) void
+    }
+
+    Usuario "1" --> "0..*" Falla : registra
+    Habitacion "1" --> "0..*" Falla : presenta
+    Falla "1" --> "0..*" Asignacion : tiene
+    Usuario "1" --> "0..*" Asignacion : recibe
+    Falla "1" --> "0..1" Reparacion : requiere
+    Falla "1" --> "0..*" CambioEstado : registra

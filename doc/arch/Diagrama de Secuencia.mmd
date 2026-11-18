@@ -13,7 +13,7 @@ sequenceDiagram
     Web->>+Usu: registrarFalla(numeroHabitacion, tipo, descripcion)
 
     alt Datos completos
-        Usu->>+Fal: crear registro de falla
+        Usu->>+Fal: crearRegistro(numeroHabitacion, tipo, descripcion)
         Note right of Fal: Estado inicial: Pendiente
         Fal-->>-Usu: Falla registrada
         Usu-->>Web: Registro exitoso
